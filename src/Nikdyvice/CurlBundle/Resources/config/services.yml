@@ -1,0 +1,15 @@
+parameters:
+    curl_url: 'http://example.com/'
+    curl_options:
+        CURLOPT_RETURNTRANSFER: true
+        CURLOPT_FOLLOWLOCATION: true
+
+services:
+    curl.factory:
+        class: Uvo\PortalBundle\Factory\CurlFactory
+
+    curl.client:
+        class: Curl\Curl
+        factory: ['@curl.factory', createClient]
+        arguments: ['%curl_url%', '%curl_options%']
+
