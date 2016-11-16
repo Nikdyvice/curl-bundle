@@ -6,10 +6,9 @@ parameters:
 
 services:
     curl.factory:
-        class: Uvo\PortalBundle\Factory\CurlFactory
+        class: Nikdyvice\CurlBundle\Factory\CurlFactory
 
     curl.client:
         class: Curl\Curl
         factory: ['@curl.factory', createClient]
         arguments: ['%curl_url%', '%curl_options%']
-
